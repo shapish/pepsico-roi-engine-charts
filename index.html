@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Pepsico ROI Engine Charts</title>
+	<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="css/master.css" rel="stylesheet">
+	<script src="js/Chart.bundle.min.js"></script>
+	<script src="js/render-charts.js" defer></script>
+</head>
+<body>
+	<div>
+		<div id="main-nav">
+			<div>
+				<a href="#" data-property="fy_impr" class="sel">2020 Impressions</a>
+				<a href="#" data-property="fy_spend">2020 Spend</a>
+				<a href="#" data-property="fy_impr_spend">2020 Impressions + Spend</a>
+				<a href="#" data-property="fy_cpp">2020 CPP</a>
+				<a href="#" data-property="fy_sales">2020 Sales</a>
+			</div>
+			<div>
+				<a href="#" data-property="fy_impr_compare">2019/2020 Impressions</a>
+				<a href="#" data-property="fy_spend_compare">2019/2020 Spend</a>
+				<a href="#" data-property="fy_impr_spend_compare">2019/2020 Impressions + Spend</a>
+				<a href="#" data-property="fy_cpp_compare">2019/2020 CPP</a>
+				<a href="#" data-property="fy_sales_compare">2019/2020 Sales</a>
+			</div>
+		</div>
+
+		<!-- Module -->
+		<div id="main-module" class="module">
+			<div class="mod-header">
+				<div class="flex-wrap">
+					<div class="left">
+						<div class="dropdown">Impressions<div class="icon material-icons">expand_more</div></div>
+					</div>
+					<div class="right">
+						<div class="dp"></div>
+						<div class="dp"></div>
+						<div class="dp"></div>
+					</div>
+				</div>
+			</div>
+			<canvas id="chart" width="360" height="265"></canvas>
+		</div>
+	</div>
+
+
+	<script>
+		// dataType became dataSrc, need to create separate settigs for each type of graph
+
+
+		/**
+		 * Click Events
+		 */
+
+		// Main navigation
+		[].slice.call(document.getElementById('main-nav').getElementsByTagName('a')).forEach((a, i) => {
+			a.addEventListener('click', e => {
+				toggleCharts(a.getAttribute('data-property'));
+				document.getElementById('main-nav').getElementsByClassName('sel')[0].classList.remove('sel');
+				a.classList.add('sel');
+				e.preventDefault();
+			});
+		});
+
+		// Get selected property
+		function getSelProp() {
+			return document.getElementById('main-nav').getElementsByClassName('sel')[0].getAttribute('data-property');
+		}
+
+	</script>
+</body>
+
+</html>
