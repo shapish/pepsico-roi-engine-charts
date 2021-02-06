@@ -33,12 +33,21 @@ const myCharts = {
 		height: 150
 	},
 	colors: {
-		red: '#C9002B',
-		redSoft: 'rgba(201,0,43,.2)',
+		// Impressions
 		blue: '#005CB4',
 		blueSoft: 'rgba(0,92,180,.2)',
+		// Spend
+		red: '#C9002B',
+		redSoft: 'rgba(201,0,43,.2)',
+		// CPP
 		green: '#4BAC00',
-		greenSoft: 'rgba(75,172,0,.2)'
+		greenSoft: 'rgba(75,172,0,.2)',
+		// Sales Volume
+		orange: '#F39200',
+		orangeSoft: 'rgba(243,146,0,.2)',
+		// Sales Dollar
+		teal: '#5ED3B4',
+		tealSoft: 'rgba(94,211,180,.2)'
 	}
 }
 
@@ -76,6 +85,14 @@ myCharts.fy_impr_spend = {
 	datasets: {
 		impr: data.y2020.impr,
 		spend: data.y2020.spend
+	}
+}
+
+myCharts.fy_impr_sales = {
+	labels: data.labels,
+	datasets: {
+		impr: data.y2020.impr,
+		volume: data.y2020.volume
 	}
 }
 
@@ -120,6 +137,16 @@ myCharts.fy_impr_spend_compare = {
 		spend: data.y2020.spend,
 		impr2: data.y2019.impr,
 		spend2: data.y2019.spend
+	}
+}
+
+myCharts.fy_impr_sales_compare = {
+	labels: data.labels,
+	datasets: {
+		impr: data.y2020.impr,
+		volume: data.y2020.volume,
+		impr2: data.y2019.impr,
+		volume2: data.y2019.volume
 	}
 }
 
@@ -240,8 +267,8 @@ function getLineChartData(chartId) {
 		datasets.push({
 			...datasetBase,
 			yAxisID: 'axis-left',
-			borderColor: myCharts.colors.blue,
-			pointBackgroundColor: myCharts.colors.blue,
+			borderColor: myCharts.colors.orange,
+			pointBackgroundColor: myCharts.colors.orange,
 			label: 'Volume Sales FY 2020',
 			data: myCharts[chartId].datasets.volume
 		});
@@ -252,8 +279,8 @@ function getLineChartData(chartId) {
 		datasets.push({
 			...datasetBase,
 			yAxisID: 'axis-right',
-			borderColor: myCharts.colors.green,
-			pointBackgroundColor: myCharts.colors.green,
+			borderColor: myCharts.colors.teal,
+			pointBackgroundColor: myCharts.colors.teal,
 			label: 'Dollar Sales FY 2020',
 			data: myCharts[chartId].datasets.dollar
 		});
@@ -299,27 +326,27 @@ function getLineChartData(chartId) {
 		});
 	}
 
-	// Volume Sale
+	// Volume Sales
 	if (myCharts[chartId].datasets.volume2) {
 		datasets.push({
 			...datasetBase,
 			borderDash: [2,2],
 			yAxisID: 'axis-left',
-			borderColor: myCharts.colors.blue,
-			pointBackgroundColor: myCharts.colors.blue,
+			borderColor: myCharts.colors.orange,
+			pointBackgroundColor: myCharts.colors.orange,
 			label: 'Volume Sales FY 2020',
 			data: myCharts[chartId].datasets.volume2
 		});
 	}
 
-	// Dollar sales
+	// Dollar Sales
 	if (myCharts[chartId].datasets.dollar2) {
 		datasets.push({
 			...datasetBase,
 			borderDash: [2,2],
 			yAxisID: 'axis-right',
-			borderColor: myCharts.colors.green,
-			pointBackgroundColor: myCharts.colors.green,
+			borderColor: myCharts.colors.teal,
+			pointBackgroundColor: myCharts.colors.teal,
 			label: 'Dollar Sales FY 2020',
 			data: myCharts[chartId].datasets.dollar2
 		});
@@ -360,7 +387,7 @@ function getChartOptions(chartId) {
 			padding: {
 				left: 30,
 				right: 30,
-				top: 30,
+				top: _getTopPadding(),
 				bottom: 20
 			}
 		},
@@ -379,6 +406,14 @@ function getChartOptions(chartId) {
 			point: {
 				radius: 0
 			}
+		}
+	}
+
+	function _getTopPadding() {
+		if (chartId == 'fy_sales' || chartId == 'fy_impr_spend' || chartId == 'fy_impr_sales' || chartId.match(/_compare$/)) {
+			return 0;
+		} else {
+			return 30;
 		}
 	}
 
@@ -406,9 +441,17 @@ function getChartOptions(chartId) {
 	}
 
 	function _getGridlineColor(side) {
-		if (chartId == 'fy_impr_spend') {
+		if (chartId == 'fy_sales' || chartId == 'fy_sales_compare') {
+			return {
+				color: (side == 'L') ? myCharts.colors.orangeSoft : myCharts.colors.tealSoft
+			}
+		} else if (chartId == 'fy_impr_spend' || chartId == 'fy_impr_spend_compare') {
 			return {
 				color: (side == 'L') ? myCharts.colors.blueSoft : myCharts.colors.redSoft
+			}
+		} else if (chartId == 'fy_impr_sales' || chartId == 'fy_impr_sales_compare') {
+			return {
+				color: (side == 'L') ? myCharts.colors.blueSoft : myCharts.colors.orangeSoft
 			}
 		} else {
 			return {}
