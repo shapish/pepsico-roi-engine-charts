@@ -1,0 +1,189 @@
+body,
+html {
+	height: 100%;
+	margin: 0;
+}
+
+/* Structure */
+body {
+	display: flex;
+	font-family: 'Source Sans Pro', sans-serif;
+}
+#side-nav {
+	flex: 0 0 200px;
+}
+#body {
+	flex: 1 0;
+	background: #eff1eb;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* Sidenav */
+#side-nav {
+	background: #455;
+	color: rgba(255, 255, 255, 0.7);
+	padding: 30px;
+	overflow-y: auto;
+}
+#side-nav > ul {
+	margin-block-start: 0;
+	margin-block-end: 0;
+	padding-inline-start: 1em;
+	margin-bottom: 50px;
+	/* border: solid 1px red; */
+}
+#side-nav h2 {
+	color: #fff;
+	font-size: 16px;
+	padding-bottom: 5px;
+	margin: 0;
+	margin-bottom: 5px;
+	border-bottom: solid 1px rgba(255, 255, 255, 0.1);
+}
+#side-nav a {
+	display: block;
+	/* margin: 0 -30px; */
+	/* padding: 10px 30px; */
+	text-decoration: none;
+	line-height: 15px;
+	font-size: 13px;
+	color: rgba(255, 255, 255, 0.7);
+	/* margin: 5px; */
+}
+#side-nav a:hover {
+	color: #fff;
+}
+#side-nav a.sel {
+	color: #ffd050;
+}
+
+/**
+ * Module
+ */
+.module {
+	display: inline-block;
+	border: solid 1px rgba(0, 0, 0, 0.15);
+	border-radius: 3px;
+	background: #fff;
+	text-align: left;
+	margin: 0 auto;
+}
+
+/* Header */
+.mod-header {
+	min-height: 50px;
+	position: relative;
+	padding-top: 10px;
+	box-sizing: border-box;
+}
+
+/* Flexbox structure */
+.mod-header .flex-wrap {
+	display: flex;
+	height: 40px;
+}
+.mod-header .flex-wrap .left {
+	flex: 1 1;
+	height: 100%;
+}
+.dropdown {
+	width: 255px;
+	height: 40px;
+	border: solid 1px rgba(0, 0, 0, 0.15);
+	background: #fafafa;
+	border-radius: 2px;
+	line-height: 38px;
+	padding: 0 18px;
+	box-sizing: border-box;
+	position: relative;
+	margin-left: 10px;
+}
+.dropdown .icon {
+	position: absolute;
+	top: -1px;
+	right: -1px;
+}
+.mod-header .flex-wrap .right {
+	height: 40px;
+	flex: 0 0 630px;
+	height: 100%;
+}
+.mod-header .flex-wrap .right .dp {
+	width: 200px;
+	height: 40px;
+	background: #000;
+	opacity: 0.05;
+	border-radius: 2px;
+	margin-right: 10px;
+	float: right;
+}
+
+/* Title */
+.mod-header h2 {
+	display: block;
+	line-height: 20px;
+	font-size: 18px;
+	margin: 10px 20px 10px 30px;
+}
+
+/* Icons */
+.icon {
+	width: 40px;
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	border-radius: 3px;
+	/* background: rgba(0,0,0,.05); */
+}
+.mod-header .icons .icon:hover {
+	background: rgba(0, 0, 0, 0.05);
+}
+.mod-header .icons .icon.sel {
+	color: #1e8cf4;
+}
+
+/**
+ * Sub Navigation
+ */
+.subnav {
+	font-weight: 600;
+	text-transform: uppercase;
+	width: calc(100% - 40px);
+	height: 40px;
+	margin: 10px 20px 0 20px;
+	border-top: dashed 1px rgba(0, 0, 0, 0.15);
+	display: flex;
+	margin-top: -1px; /* To make dashed border-top appear on same position as solid line without subnav */
+}
+.subnav a {
+	display: block;
+	text-decoration: none;
+	color: #444;
+	width: 150px;
+	text-align: center;
+	line-height: 40px;
+	opacity: 0.5;
+	position: relative;
+	z-index: 1;
+}
+.subnav a:hover {
+	opacity: 1;
+}
+.subnav a.sel {
+	opacity: 1;
+	cursor: default;
+}
+.subnav a.sel::after {
+	content: '';
+	display: block;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 3px;
+	background: #ffd050;
+}

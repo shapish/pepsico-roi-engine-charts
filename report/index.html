@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Pepsico ROI Engine Charts</title>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://fonts.googleapis.com/icon?family=Material+Icons"
+			rel="stylesheet"
+		/>
+		<link href="css/master.css" rel="stylesheet" />
+		<script src="js/chart.min.js"></script>
+		<!-- <script src="js/Chart.bundle.min-v2.9.3.js"></script> -->
+		<script src="js/render-charts.js"></script>
+		<script src="js/deepmerge.js"></script>
+	</head>
+	<body>
+		<!-- side-nav -->
+		<!-- prettier-ignore -->
+		<div id="side-nav">
+			<h2>Sales Report</h2>
+			<ul>
+				<li><a href="#volume">Volume (MM)</a></li>
+				<li><a href="#dollar">Dollar ($MM)</a></li>
+				<li><a href="#volume_f">Volume (MM) (flat)</a></li>
+				<li><a href="#dollar_f">Dollar ($MM) (flat)</a></li>
+				<li><a href="#volume_contribution">Volume Contribution</a></li>
+				<li><a href="#prop_volume_contribution_legend">Prop. Volume Contrib. Legend</a></li>
+				<li><a href="#prop_volume_contribution_a">Prop. Volume Contrib. A (%)</a></li>
+				<li><a href="#prop_volume_contribution_b">Prop. Volume Contrib. B (%)</a></li>
+				<li><a href="#volume_dueto">Volume Due-To (%)</a></li>
+			</ul>
+			<h2>Media Impact TM</h2>
+			<ul>
+				<li><a href="#mi_spend">Spend ($MM)</a></li>
+				<li><a href="#mi_support">Support (GRP)</a></li>
+				<li><a href="#mi_cpp">CPP ($)</a></li>
+				<li><a href="#mi_volume_contribution">Media Volume Contribution (%)</a></li>
+				<li><a href="#mi_effectiveness">Effectiveness</a></li>
+				<li><a href="#mi_roi">ROI ($)</a></li>
+			</ul>
+			<h2>Media Impact TM (flat)</h2>
+			<ul>
+				<li><a href="#mi_f_spend">Spend ($MM)</a></li>
+				<li><a href="#mi_f_support">Support (GRP)</a></li>
+				<li><a href="#mi_f_cpp">CPP ($)</a></li>
+				<li><a href="#mi_f_volume_contribution">Media Volume Contribution (%)</a></li>
+				<li><a href="#mi_f_effectiveness">Effectiveness</a></li>
+				<li><a href="#mi_f_roi">ROI ($)</a></li>
+			</ul>
+			<h2>Media Impact OJ</h2>
+			<ul>
+				<li><a href="#mi_oj_spend">Spend ($MM)</a></li>
+				<li><a href="#mi_oj_support">Support (GRP)</a></li>
+				<li><a href="#mi_oj_cpp">CPP ($)</a></li>
+				<li><a href="#mi_oj_volume_contribution">Media Volume Contribution (%)</a></li>
+				<li><a href="#mi_oj_effectiveness">Effectiveness</a></li>
+				<li><a href="#mi_oj_roi">ROI ($)</a></li>
+			</ul>
+			<h2>Media Impact Campaign</h2>
+			<ul>
+				<li><a href="#mi_c_spend">Spend ($MM)</a></li>
+				<li><a href="#mi_c_support">Support (GRP)</a></li>
+				<li><a href="#mi_c_cpp">CPP ($)</a></li>
+				<li><a href="#mi_c_volume_contribution">Media Volume Contribution (%)</a></li>
+				<li><a href="#mi_c_effectiveness">Effectiveness</a></li>
+				<li><a href="#mi_c_roi">ROI ($)</a></li>
+			</ul>
+			<h2>Media Impact Vehicle Breakdown</h2>
+			<ul>
+				<li><a href="#mi_spend_breakdown">Spend ($MM)</a></li>
+				<li><a href="#mi_spend_breakdown_simplified">Spend Simplified ($MM)</a></li>
+				<li><a href="#mi_spend_oj_breakdown">Spend OJ ($MM)</a></li>
+				<li><a href="#mi_support_breakdown">Support (GRP)</a></li>
+				<li><a href="#mi_cpp_breakdown">CPP ($)</a></li>
+				<li><a href="#mi_volume_contribution_breakdown">Media Volume Contribution (%) (fake data)</a></li>
+				<li><a href="#mi_effectiveness_breakdown">Effectiveness</a></li>
+				<li><a href="#mi_roi_breakdown">ROI ($)</a></li>
+			</ul>
+			<h2>Media Impact Subvehicle Breakdown</h2>
+			<ul>
+				<li><a href="#mi_spend_breakdown_vehicle">Spend ($MM)</a></li>
+			</ul>
+			<h2>Media Impact Campaign Breakdown</h2>
+			<ul>
+				<li><a href="#mi_spend_breakdown_campaign">Spend ($MM)</a></li>
+			</ul>
+			<h2>Media Impact Due-To</h2>
+			<ul>
+				<li><a href="#mi_volume_contribution_dueto">Media Volume Contribution (%) (fake data)</a></li>
+				<li><a href="#mi_effectiveness_dueto">Effectiveness</a></li>
+				<li><a href="#mi_roi_dueto">ROI ($)</a></li>
+			</ul>
+			<h2>Other</h2>
+			<ul>
+				<li><a href="#weekly_vol_decomp_vs_grp">Weekly Volume Decomp vs. GRP</a></li>
+				<li><a href="#weekly_vol_decomp_btm">Weekly Volume Decompositions (B/T/M)</a></li>
+				<li><a href="#weekly_vol_decomp_detail">Weekly Volume Decompositions (detail)</a></li>
+				<li><a href="#weekly_vol_decomps_audio">Weekly Volume Decomp vs. GRP audio</a></li>
+				<li><a href="#saturation_curve">Saturation Curve</a></li>
+			</ul>
+		</div>
+
+		<!-- body -->
+		<div id="body">
+			<div id="main-module" class="module" style="position: relative">
+				<canvas id="chart"></canvas>
+			</div>
+		</div>
+
+		<script>
+			new ChartDemo()
+		</script>
+	</body>
+</html>

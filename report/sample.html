@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Chart Sample</title>
+		<script src="js/chart.min.js"></script>
+	</head>
+	<body style="background: #eee">
+		<canvas
+			id="chart"
+			width="560"
+			height="370"
+			style="border: solid 1px #ddd; background: #fff"
+		></canvas>
+	</body>
+	<script>
+		const ctx = document.getElementById('chart').getContext('2d')
+		new Chart(ctx, {
+			type: 'bar',
+			data: {
+				labels: ['H1 2020', 'H1 2021'],
+				datasets: [
+					{
+						label: 'A',
+						data: [93, 86],
+						backgroundColor: '#D2B1D2',
+					},
+					{
+						label: 'B',
+						data: [105, 97],
+						backgroundColor: '#C1DDBA',
+					},
+				],
+			},
+			options: {
+				responsive: false,
+				tooltips: {
+					mode: 'index',
+				},
+				legend: {
+					display: true,
+				},
+				animation: false,
+				layout: {
+					padding: {
+						left: 30,
+						right: 30,
+						top: 30,
+						bottom: 20,
+					},
+				},
+			},
+		})
+	</script>
+</html>
